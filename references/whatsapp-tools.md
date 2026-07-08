@@ -156,3 +156,15 @@
 - WhatsApp 有频率限制，**每条消息间隔至少 6 秒**
 - 不支持批量群发 API，需逐条发送并添加延迟
 - 同一号码 24 小时内首次发消息建议先验证 WhatsApp 活跃状态
+
+## 常见错误 & 自救
+
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| Snov.io 返回空 | 域名错误或没有匹配联系人 | 检查域名拼写，换行业关键词搜索 |
+| Snov.io 403 | API Key 无效或过期 | 让用户去 Snov.io 重新获取 Key |
+| Snov.io 429 | 请求频率超限 | 等待 60 秒后重试 |
+| find_email 无结果 | 联系人姓名与实际不匹配 | 尝试不同姓名格式（first.last / flast） |
+| Prospector 报错 | Node.js 未安装或版本低于 18 | 检查：node --version，需 >=18 |
+| Docker 连不上 | Reacher 容器未启动 | 运行 bash scripts/setup_check_email.sh |
+| domain_prospects 无结果 | 公司太小或无公开联系人 | 换 LinkedIn 手动查找，或换更大公司 |
