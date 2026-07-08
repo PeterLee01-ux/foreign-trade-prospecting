@@ -8,22 +8,13 @@
 1. **每次调用 Snov.io 查找邮箱前，必须停下来让用户输入模糊查找关键词**，等用户确认后再继续。不得自动生成关键词。
 2. **每个公司最多查 4 个邮箱**，严格控制 Snov.io 点数消耗。
 
-## 预设职位查找关键词（模糊匹配）
+## 预设职位查找关键词
 
-查找联系人时使用以下关键词过滤 job_position，采用模糊匹配（包含即命中）。
-用户可在暂停点增删修改：
+使用预设关键词列表（见 SKILL.md 全局规则），模糊匹配 job_position。
+默认包含：president, chief, chair, director, GM, partner, CEO, head,
+procurement, purchas, sourc, buyer, vendor, supplier, supply。
 
-```
-president, chief, chair, director, general manager, GM, partner,
-CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
-```
-
-匹配逻辑：
-- "purchas" 命中 "Purchasing Manager"、"Purchase Director"
-- "sourc" 命中 "Sourcing Manager"、"Global Sourcing"
-- "chief" 命中 "Chief Executive Officer"、"Chief Operating Officer"
-- "director" 命中 "Director of Sales"、"Marketing Director"
-- 不区分大小写
+用户可在暂停点增删修改。
 
 
 ## 操作步骤
@@ -36,7 +27,7 @@ CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
 - 预计需要多少家公司？
 
 ### 第二步：域名搜索（用户未提供具体域名时）
-使用 Snov.io domain_search 查找公司域名：
+使用 Snov.io domain_search 查找公司域名。若失败（403/429/空结果），报告用户并询问是否换关键词重试：
 - 输入：公司名称或关键词
 - 返回：域名、公司信息、行业、所在地
 
@@ -48,7 +39,7 @@ CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
 
 ### 第四步：【暂停点】确认查找关键词
 
-**在此步骤必须停下来**，向用户展示：
+**⛔ PAUSE — NEVER proceed without user confirmation.**，向用户展示：
 - 当前目标公司列表
 - 当前使用的职位关键词列表
 - 询问用户：是否使用预设关键词继续，还是需要增删修改？
@@ -76,3 +67,15 @@ CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
 ### 第八步：呈现结果
 以表格形式输出：
 | 姓名 | 职位 | 公司 | 邮箱 | 信心度 | 命中关键词 | 来源 |
+
+## 常见错误 & 自救
+
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| Snov.io 返回空 | 域名错误或没有匹配联系人 | 检查域名拼写，换行业关键词搜索 |
+| Snov.io 403 | API Key 无效或过期 | 让用户去 Snov.io 重新获取 Key |
+| Snov.io 429 | 请求频率超限 | 等待 60 秒后重试 |
+| find_email 无结果 | 联系人姓名与实际不匹配 | 尝试不同姓名格式（first.last / flast） |
+| Prospector 报错 | Node.js 未安装或版本低于 18 | 检查：node --version，需 >=18 |
+| Docker 连不上 | Reacher 容器未启动 | 运行 bash scripts/setup_check_email.sh |
+| domain_prospects 无结果 | 公司太小或无公开联系人 | 换 LinkedIn 手动查找，或换更大公司 |
