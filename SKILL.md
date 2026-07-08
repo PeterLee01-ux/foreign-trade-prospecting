@@ -69,6 +69,7 @@ CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
 | 竞品/挖客户 | competitor-mining.md | Snov.io |
 | 按国家城市筛选 | geo-filtering.md | Snov.io |
 | SMTP配置/发邮件 | email-sending.md | mcp-email-server |
+| **速查表（优先看）** | **quick-reference.md** | — |
 
 ## 首次使用检查
 
