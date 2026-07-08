@@ -9,22 +9,13 @@
 2. **每个公司最多查 4 个邮箱**，严格控制 Snov.io 点数消耗。
 3. **发送开发邮件前，必须停下来让用户上传附件并输入邮件内容**，等用户确认后再发送。不得自动生成邮件内容。
 
-## 预设职位查找关键词（模糊匹配）
+## 预设职位查找关键词
 
-查找联系人时使用以下关键词过滤 job_position，采用模糊匹配（包含即命中）。
-用户可在暂停点增删修改：
+使用预设关键词列表（见 SKILL.md 全局规则），模糊匹配 job_position。
+默认包含：president, chief, chair, director, GM, partner, CEO, head,
+procurement, purchas, sourc, buyer, vendor, supplier, supply。
 
-```
-president, chief, chair, director, general manager, GM, partner,
-CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
-```
-
-匹配逻辑：
-- "purchas" 命中 "Purchasing Manager"、"Purchase Director"
-- "sourc" 命中 "Sourcing Manager"、"Global Sourcing"
-- "chief" 命中 "Chief Executive Officer"、"Chief Operating Officer"
-- "director" 命中 "Director of Sales"、"Marketing Director"
-- 不区分大小写
+用户可在暂停点增删修改。
 
 
 ## 完整流程
@@ -64,7 +55,7 @@ CEO, head, procurement, purchas, sourc, buyer, vendor, supplier, supply
 
 #### 步骤一：【暂停点】准备邮件内容
 
-**在此步骤必须停下来**，向用户展示：
+**⛔ PAUSE — NEVER proceed without user confirmation.**，向用户展示：
 - 待发送的目标联系人列表（姓名、公司、邮箱、职位）
 - 提示用户上传邮件附件（产品目录、公司介绍 PDF 等）
 - 提示用户输入邮件正文内容
@@ -175,3 +166,15 @@ Best regards,
 | [Title] | User's job title |
 | [WhatsApp/Phone] | User's contact info |
 | [personalized observation from research] | Auto-filled from company research |
+
+## 常见错误 & 自救
+
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| Snov.io 返回空 | 域名错误或没有匹配联系人 | 检查域名拼写，换行业关键词搜索 |
+| Snov.io 403 | API Key 无效或过期 | 让用户去 Snov.io 重新获取 Key |
+| Snov.io 429 | 请求频率超限 | 等待 60 秒后重试 |
+| find_email 无结果 | 联系人姓名与实际不匹配 | 尝试不同姓名格式（first.last / flast） |
+| Prospector 报错 | Node.js 未安装或版本低于 18 | 检查：node --version，需 >=18 |
+| Docker 连不上 | Reacher 容器未启动 | 运行 bash scripts/setup_check_email.sh |
+| domain_prospects 无结果 | 公司太小或无公开联系人 | 换 LinkedIn 手动查找，或换更大公司 |
