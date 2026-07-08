@@ -108,3 +108,15 @@
 - 发送状态（成功/失败）
 - 失败原因（如有）
 - 在 Snov.io 列表中更新 outreach_stage 为 "contacted"
+
+## 常见错误 & 自救
+
+| 错误 | 原因 | 解决 |
+|------|------|------|
+| Snov.io 返回空 | 域名错误或没有匹配联系人 | 检查域名拼写，换行业关键词搜索 |
+| Snov.io 403 | API Key 无效或过期 | 让用户去 Snov.io 重新获取 Key |
+| Snov.io 429 | 请求频率超限 | 等待 60 秒后重试 |
+| find_email 无结果 | 联系人姓名与实际不匹配 | 尝试不同姓名格式（first.last / flast） |
+| Prospector 报错 | Node.js 未安装或版本低于 18 | 检查：node --version，需 >=18 |
+| Docker 连不上 | Reacher 容器未启动 | 运行 bash scripts/setup_check_email.sh |
+| domain_prospects 无结果 | 公司太小或无公开联系人 | 换 LinkedIn 手动查找，或换更大公司 |
