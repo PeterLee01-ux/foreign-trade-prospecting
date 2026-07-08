@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "外贸获客助手"
+  short_description: "找客户邮箱、验证WhatsApp、公司背景调查、客户分类管理——外贸开发全流程，覆盖美国及中东市场"
+  default_prompt: "帮我找美国LED进口商的联系方式"
