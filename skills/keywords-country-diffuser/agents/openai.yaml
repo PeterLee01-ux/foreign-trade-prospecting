@@ -1,0 +1,4 @@
+interface:
+  display_name: "Keywords_Country__Diffuser_Skill"
+  short_description: "Build country-level diffuser prospect lists"
+  default_prompt: "Use $keywords-country-diffuser to research scent-diffuser prospects in a target country and export a sourced Excel lead list."
