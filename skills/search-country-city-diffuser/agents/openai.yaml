@@ -1,0 +1,4 @@
+interface:
+  display_name: "Search_Country_City_Diffuser_Skill"
+  short_description: "按国家、城市和目标行业查找香氛企业并导出清洗后的Excel名单"
+  default_prompt: "Use $search-country-city-diffuser to find diffuser-related prospects by country and city and export a quality-checked Excel workbook."
