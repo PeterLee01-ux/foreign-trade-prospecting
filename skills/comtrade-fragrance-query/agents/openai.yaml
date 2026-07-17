@@ -1,0 +1,7 @@
+interface:
+  display_name: "ComTrade_skills Fragrance Query"
+  short_description: "Enter a country name to query fragrance-industry customs trade data"
+  default_prompt: "Use $comtrade-fragrance-query to query fragrance equipment and fragrance trade data for China."
+
+policy:
+  allow_implicit_invocation: true
